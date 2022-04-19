@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CreateMapper">
+    <insert id="createUser">
+       
+        INSERT INTO AdminTuan(username, pwd,email, phone) VALUES (#{username},#{pwd},#{email},#{phone})
+ 
+    </insert >
+    
+    <select id="checkLogin" resultType="int">
+       
+        SELECT COUNT(username) FROM AdminTuan WHERE username = #{username} and pwd = #{pwd}
+ 
+    </select >
+    
+    <select id="getAllUser" resultType="com.example.demo.entity.AdminTuanEntity">
+       
+        SELECT * FROM AdminTuan
+ 
+    </select >
+    
+    <delete id="deleteUser">
+       
+        DELETE FROM AdminTuan WHERE id=#{id};
+ 
+    </delete >
+    <update id="edit">
+       
+        UPDATE AdminTuan SET username = #{username}, pwd = #{pwd}, email=#{email}, phone=#{phone} WHERE id=#{id}
+ 
+    </update >
+    <select id="searchuser" resultType="com.example.demo.entity.AdminTuanEntity">
+       SELECT * FROM AdminTuan WHERE username =#{username}
+    </select>
+ 
+    
+</mapper>
